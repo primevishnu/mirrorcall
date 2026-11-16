@@ -5,7 +5,7 @@
 [![Platform](https://img.shields.io/badge/Platform-Android%208.0%2B%20%7C%20Windows-brightgreen.svg)](#install-and-call)
 [![WebRTC](https://img.shields.io/badge/WebRTC-Native%20libwebrtc-orange.svg)](#whats-changed-in-20)
 
-> **Private, peer-to-peer two-person Android video calls with on-the-fly camera flip / mirroring.**  
+> **Private, peer-to-peer two-person Android video calls with on-the-fly camera flip / mirroring for the ones who are chopped when viewed mirrored.**  
 > Both people use MirrorCall. No account, no phone number, no root needed. It does not alter WhatsApp, Teams, Meet, or other apps' cameras. Includes a separate Windows utility in `windows/`.
 
 📦 **[Download Latest APK (MirrorCall-2.1.0.apk)](https://github.com/primevishnu/mirrorcall/releases/latest)**
