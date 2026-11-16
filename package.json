@@ -1,0 +1,34 @@
+{
+  "name": "mirrorcall",
+  "version": "2.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/primevishnu/mirrorcall.git"
+  },
+  "homepage": "https://github.com/primevishnu/mirrorcall#readme",
+  "bugs": {
+    "url": "https://github.com/primevishnu/mirrorcall/issues"
+  },
+  "type": "module",
+  "description": "A private two-person Android video calling app with outgoing video mirroring",
+  "scripts": {
+    "start": "node server/index.mjs",
+    "test": "node --test tests/server.test.mjs tests/core.test.mjs tests/crypto.test.mjs tests/health.test.mjs",
+    "pretest:call": "node scripts/create-test-video.mjs",
+    "test:call": "playwright test",
+    "setup": "node scripts/setup.mjs",
+    "dev:worker": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "wrangler": "^4.157.0"
+  }
+}

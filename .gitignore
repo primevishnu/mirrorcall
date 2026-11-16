@@ -1,0 +1,15 @@
+node_modules/
+.tools/
+.gradle/
+**/build/
+dist/
+.signing/
+.env
+local.properties
+test-results/
+playwright-report/
+*.log
+tests/fixtures/*.y4m
+.wrangler/
+.dev.vars
+wayfarer/

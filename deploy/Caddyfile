@@ -1,0 +1,7 @@
+{$PUBLIC_DOMAIN} {
+    header {
+        Strict-Transport-Security "max-age=31536000"
+        -Server
+    }
+    reverse_proxy signaling:3000
+}

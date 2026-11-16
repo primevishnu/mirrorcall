@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111218">
+  <title>MirrorCall · Just us two</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.mjs" type="module"></script>
+</head>
+<body>
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-camera" viewBox="0 0 24 24"><rect x="3" y="6" width="12" height="12" rx="3"/><path d="m15 10 6-3v10l-6-3"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3m-4 0h8"/></symbol>
+    <symbol id="i-flip" viewBox="0 0 24 24"><path d="M20 7h-7l3-3M4 17h7l-3 3M3 10a9 9 0 0 1 17-3M21 14a9 9 0 0 1-17 3"/></symbol>
+    <symbol id="i-mirror" viewBox="0 0 24 24"><path d="M12 2v20M3 6h5v12H3zm13 0h5v12h-5z"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11a9 9 0 0 1-9 9H4l-2 2V11a9 9 0 0 1 19 0Z"/><path d="M7 9h10M7 13h7"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="m9 3 1-1h4l1 3 3 2 3 1v4l-2 2-1 3-3 1-1 3h-4l-2-3-3-1-2-3V9l3-2Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="m10 14 4-4M9 15l-2 2a4 4 0 0 1-6-6l5-5a4 4 0 0 1 6 0m0 12a4 4 0 0 0 6 0l5-5a4 4 0 0 0-6-6l-2 2"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M3 16v-4a18 18 0 0 1 18 0v4h-5v-4a15 15 0 0 0-8 0v4Z"/></symbol>
+    <symbol id="i-speaker" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3zm13-1a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="3"/><path d="M16 8V3H3v13h5"/></symbol>
+    <symbol id="i-pip" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><rect x="11" y="11" width="8" height="6" rx="1.5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  </defs></svg>
+
+  <main id="home" class="home">
+    <header class="topbar"><a class="brand" href="#"><img src="icon.svg" alt="" width="29" height="29">mirrorcall<span class="brand-dot">.</span></a><button id="open-settings" class="icon-button" aria-label="Open settings"><svg><use href="#i-settings"/></svg></button></header>
+    <section class="hero"><p class="eyebrow"><span class="little-dot"></span> JUST US TWO</p><h1>Your person.<br>Your kind of <em>call.</em></h1><p class="intro">A private space to feel a little closer.<br>With a mirror that works on their side, too.</p></section>
+    <section class="preview-card" aria-label="Your outgoing camera preview">
+      <div id="home-preview-placeholder" class="preview-placeholder"><div class="mirror-art"><span></span><span></span></div><p>This is your good side.</p><button id="preview-button" class="text-button">Preview your camera <svg><use href="#i-arrow"/></svg></button></div>
+      <video id="home-video" autoplay playsinline muted hidden></video>
+      <div class="preview-corner"><span class="little-dot"></span> YOUR OUTGOING VIEW</div>
+      <div class="preview-footer"><span>You, as they’ll see you</span><button id="home-mirror" class="mirror-pill" aria-pressed="true"><svg><use href="#i-mirror"/></svg><span>Mirrored</span></button></div>
+    </section>
+    <fieldset class="precall"><legend>Before your call</legend><label><input id="precall-muted" type="checkbox"> Start with microphone muted</label><label><input id="precall-camera-off" type="checkbox"> Start with camera off</label><label>Starting camera<select id="precall-facing"><option value="front">Front camera</option><option value="rear">Rear camera</option></select></label><p class="small-print">Applies to calls you start or join. Preview opens only the camera.</p></fieldset>
+    <button id="last-call" class="text-button" hidden>Last call details</button>
+    <div class="home-actions"><button id="create-room" class="primary-button"><svg><use href="#i-camera"/></svg>Start a private call<svg class="end-icon"><use href="#i-arrow"/></svg></button><button id="open-join" class="secondary-button"><svg><use href="#i-link"/></svg>Join with a code</button></div>
+    <p id="setup-hint" class="setup-hint">No server needed: you swap two codes on WhatsApp. <button id="setup-link" class="inline-button">Settings</button></p>
+    <footer class="privacy-note"><svg><use href="#i-lock"/></svg><span>Two people. Encrypted calls. No recordings.</span></footer>
+  </main>
+
+  <main id="call" class="call-screen" hidden>
+    <video id="remote-video" autoplay playsinline></video>
+    <div id="remote-placeholder" class="remote-placeholder"><div id="remote-avatar" class="avatar">♥</div><h2 id="remote-name">Your person</h2><p id="remote-message">Getting a little closer…</p></div>
+    <header class="call-top"><div class="call-lock"><svg><use href="#i-lock"/></svg><span id="connection-label">Connecting</span><span id="call-timer">00:00</span></div><div class="call-actions"><button id="enter-pip" class="icon-button" aria-label="Picture in picture" hidden><svg><use href="#i-pip"/></svg></button><button id="call-details" class="icon-button" aria-label="Connection details"><svg><use href="#i-settings"/></svg></button></div></header>
+    <div id="local-preview" class="local-preview"><video id="local-video" autoplay muted playsinline></video><div class="local-label"><span id="local-name">You</span><span id="local-mirror-mark">↔</span></div></div>
+    <section id="waiting-card" class="waiting-card"><p class="eyebrow">A ROOM FOR TWO</p><h2>Save them a seat.</h2><p>Send your private invitation.<br>Only someone with this link and your server key can join.</p><button id="share-invite" class="primary-button"><svg><use href="#i-link"/></svg>Share invitation</button><button id="copy-invite" class="text-button"><svg><use href="#i-copy"/></svg>Copy invitation</button><p class="small-print">Keep this screen open while you wait.</p></section>
+    <section id="direct-card" class="waiting-card direct-card" hidden><p id="direct-step" class="eyebrow">STEP 1 OF 2</p><h2 id="direct-title">Send them this code.</h2><p id="direct-text">Share it on WhatsApp. They send a reply code back: copy it, then come back here.</p><button id="direct-share" class="primary-button"><svg><use href="#i-link"/></svg>Share code</button><button id="direct-copy" class="text-button"><svg><use href="#i-copy"/></svg>Copy code</button><form id="direct-reply-form" class="direct-reply"><textarea id="direct-reply" rows="2" placeholder="Paste their reply code" aria-label="Their reply code" spellcheck="false" autocapitalize="off"></textarea><div class="direct-actions"><button type="button" id="direct-paste" class="secondary-button">Paste</button><button type="submit" class="primary-button">Connect</button></div></form><p id="direct-note" class="small-print">Keep MirrorCall open in the background until you connect.</p></section>
+    <div id="mirror-notice" class="mirror-notice"><svg><use href="#i-mirror"/></svg><span>Your partner sees your mirrored video</span></div>
+    <div id="peer-state" class="peer-state" hidden></div>
+    <div class="call-bottom"><div class="controls">
+      <button id="toggle-mic" class="control" aria-label="Mute microphone" aria-pressed="false"><span><svg><use href="#i-mic"/></svg></span><small>Mic on</small></button>
+      <button id="toggle-camera" class="control" aria-label="Turn camera off" aria-pressed="false"><span><svg><use href="#i-camera"/></svg></span><small>Camera</small></button>
+      <button id="switch-camera" class="control" aria-label="Switch front and rear camera"><span><svg><use href="#i-flip"/></svg></span><small>Flip</small></button>
+      <button id="toggle-mirror" class="control selected" aria-label="Mirror the video your partner receives" aria-pressed="true"><span><svg><use href="#i-mirror"/></svg></span><small>Mirror on</small></button>
+      <button id="toggle-chat" class="control" aria-label="Open private chat"><span><svg><use href="#i-chat"/></svg><b id="chat-badge" hidden></b></span><small>Chat</small></button>
+    </div><div class="bottom-row"><button id="toggle-speaker" class="speaker-button" aria-pressed="true"><svg><use href="#i-speaker"/></svg><span>Speaker</span></button><button id="hangup" class="hangup-button" aria-label="End call"><svg><use href="#i-phone"/></svg><span>Leave call</span></button><span id="quality-label" class="quality-label">BALANCED</span></div></div>
+  </main>
+
+  <dialog id="settings-dialog"><form id="settings-form" class="sheet"><div class="sheet-top"><span class="eyebrow">MAKE IT YOURS</span><button type="button" class="icon-button close-dialog" aria-label="Close settings"><svg><use href="#i-close"/></svg></button></div><h2>Your little corner.</h2><p class="sheet-description">The server is optional. Without one, you connect by swapping two codes on WhatsApp.</p><label>Your name<input id="setting-name" maxlength="32" placeholder="What should we call you?" autocomplete="nickname"></label><label>Private server address (optional)<input id="setting-server" type="url" placeholder="https://call.example.com" autocomplete="url"></label><label>Server access key<input id="setting-access" type="password" placeholder="Only with a private server" autocomplete="off"></label><label class="checkbox-label"><input id="setting-remember" type="checkbox"> Remember the access key on this phone</label><label>Call controls<select id="setting-controls"><option value="4000">Hide after 4 seconds</option><option value="8000">Hide after 8 seconds</option><option value="0">Always visible</option></select></label><label id="setting-display-row" class="checkbox-label" hidden><input id="setting-display" type="checkbox"> Display compatibility mode (try if video blips)</label><p class="small-print">Compatibility mode changes drawing-surface sizing, not camera quality. It may use more graphics power. Change it between calls.</p><label>Video quality<select id="setting-quality"><option value="balanced">Balanced · up to 720p / 30 fps (recommended)</option><option value="hd">Best · up to 1080p / 30 fps</option><option value="data">Save data · up to 360p / 15 fps</option></select></label><label>Relay (TURN) server (optional)<input id="setting-turn-url" placeholder="turn:relay.example.com:3478" autocomplete="off" autocapitalize="off" spellcheck="false"></label><label>Relay username<input id="setting-turn-user" autocomplete="off" autocapitalize="off" spellcheck="false"></label><label>Relay password<input id="setting-turn-pass" type="password" autocomplete="off"></label><label class="checkbox-label"><input id="setting-relay" type="checkbox"> Relay only · hide your IP from your partner</label><p class="small-print">A relay connects you when your networks block a direct connection; use the same relay on both phones. "Relay only" needs a relay. Video continues in picture-in-picture; your camera pauses when the app is fully hidden.</p><button type="button" id="show-licenses" class="text-button">Open-source licenses</button><button type="button" id="copy-log" class="text-button">Copy diagnostics log</button><button type="submit" class="primary-button">Save settings<svg><use href="#i-check"/></svg></button></form></dialog>
+  <dialog id="join-dialog"><form id="join-form" class="sheet"><div class="sheet-top"><span class="eyebrow">YOU’RE INVITED</span><button type="button" class="icon-button close-dialog" aria-label="Close invitation"><svg><use href="#i-close"/></svg></button></div><h2>Come a little closer.</h2><p class="sheet-description">Copy the whole message your person sent on WhatsApp, then paste it here.</p><label>Call code<textarea id="join-invite" rows="4" required placeholder="MC1.…" spellcheck="false" autocapitalize="off"></textarea></label><div class="direct-actions"><button type="button" id="join-paste" class="secondary-button">Paste</button><button type="submit" class="primary-button">Join call<svg><use href="#i-arrow"/></svg></button></div></form></dialog>
+  <dialog id="chat-dialog"><section class="sheet chat-sheet"><div class="sheet-top"><div><span class="eyebrow">JUST BETWEEN US</span><h2>A little side chat.</h2></div><button class="icon-button close-dialog" aria-label="Close chat"><svg><use href="#i-close"/></svg></button></div><p class="small-print">Encrypted between your devices. Cleared when you leave.</p><div id="messages" class="messages" role="log" aria-live="polite"></div><form id="chat-form" class="chat-form"><input id="chat-input" maxlength="2000" placeholder="Say something…" aria-label="Chat message" required autocomplete="off"><button class="icon-button" aria-label="Send message"><svg><use href="#i-arrow"/></svg></button></form></section></dialog>
+  <dialog id="details-dialog"><section class="sheet"><div class="sheet-top"><span class="eyebrow">UNDER THE SURFACE</span><button class="icon-button close-dialog" aria-label="Close details"><svg><use href="#i-close"/></svg></button></div><h2>Connection details.</h2><p id="health-message" class="small-print"></p><dl id="connection-details"></dl><p id="connection-security-notes" class="small-print"></p><button type="button" id="copy-log-details" class="text-button">Copy diagnostics log</button></section></dialog>
+  <dialog id="licenses-dialog"><section class="sheet"><div class="sheet-top"><h2>Open-source licenses</h2><button class="icon-button close-dialog" aria-label="Close licenses">?</button></div><pre id="license-text"></pre></section></dialog>
+  <dialog id="audio-dialog"><section class="sheet"><div class="sheet-top"><h2>Audio output</h2><button class="icon-button close-dialog" aria-label="Close audio output">X</button></div><p id="audio-note" class="small-print">Choose where to hear the call.</p><div id="audio-routes" class="route-list"></div></section></dialog>
+  <dialog id="summary-dialog"><section class="sheet"><div class="sheet-top"><h2>Last call</h2><button class="icon-button close-dialog" aria-label="Close last call">X</button></div><p class="small-print">Last available measurement, not a whole-call average. Kept only until the app closes.</p><pre id="summary-text"></pre><button id="clear-summary" class="text-button">Clear last call details</button></section></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
